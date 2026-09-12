@@ -90,7 +90,7 @@ class ScrobblerFrontend(pykka.ThreadingActor, CoreListener):
                 album=((track.album and track.album.name) or ""),
                 duration=str(duration),
                 track_number=str(track.track_no or 0),
-                mbid=(str(track.musicbrainz_id) if track.musicbrainz_id else ""),
+                mbid=(track.musicbrainz_id or ""),
             )
         except pylast.PyLastError as exc:
             logger.warning(f"Error submitting playing track to Last.fm: {exc}")
@@ -133,7 +133,7 @@ class ScrobblerFrontend(pykka.ThreadingActor, CoreListener):
                 album=((track.album and track.album.name) or ""),
                 track_number=track.track_no,
                 duration=round(duration.total_seconds()),
-                mbid=(str(track.musicbrainz_id) if track.musicbrainz_id else ""),
+                mbid=(track.musicbrainz_id or ""),
             )
         except pylast.PyLastError as exc:
             logger.warning(f"Error submitting played track to Last.fm: {exc}")
