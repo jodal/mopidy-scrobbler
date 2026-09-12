@@ -3,7 +3,6 @@ from __future__ import annotations
 import datetime as dt
 from typing import TYPE_CHECKING, cast
 from unittest import mock
-from uuid import UUID
 
 import pylast
 import pytest
@@ -132,7 +131,7 @@ def test_track_playback_started_updates_now_playing(
         album=album,
         track_no=3,
         length=DurationMs(180432),
-        musicbrainz_id=UUID("59e2b08a-f428-4db6-85aa-a757f026aa2a"),
+        musicbrainz_id="59e2b08a-f428-4db6-85aa-a757f026aa2a",
     )
     tl_track = models.TlTrack(track=track, tlid=TracklistId(17))
 
@@ -191,7 +190,7 @@ def test_track_playback_ended_scrobbles_played_track(
         album=album,
         track_no=3,
         length=DurationMs(180432),
-        musicbrainz_id=UUID("59e2b08a-f428-4db6-85aa-a757f026aa2a"),
+        musicbrainz_id="59e2b08a-f428-4db6-85aa-a757f026aa2a",
     )
     tl_track = models.TlTrack(track=track, tlid=TracklistId(17))
 
